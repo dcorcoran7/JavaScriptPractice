@@ -1,0 +1,54 @@
+p.paragraph {margin: 10px 10px 10px 10px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+    padding: 5px;
+    background-color: blanchedalmond;
+    box-shadow: 10px 10px 25px dimgrey;
+}
+
+nav {
+    font-weight: bold;
+    color: white;
+    background-color: maroon;
+    border-width: 2px;
+    border-style: solid;
+    border-color: maroon;
+    width: 10;
+    text-align: center;
+ }
+
+ nav ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+ }
+
+ nav:hover ul {
+    display: block;
+ }
+
+ nav ul li {
+    background-color: white;
+    color: black;
+    border-top: 2px solid maroon;
+ }
+
+ nav ul li:hover {
+    background-color: orangered;
+    font-style: italic;
+ }
+
+ img.Logo {
+    position: relative;
+    animation: movingimage linear 10s 1s infinite;
+}
+
+@keyframes movingimage {
+    0% {opacity: 1; left: 0px; top: 0px}
+    25% {opacity: 1; left: 0px; top: 15px;}
+    50% {opacity: 1; left: 15px; top: 15px;}
+    75% {opacity: 1; left: 15px; top: 0px;}
+    100% {opacity: 1; left: 0px; top: 0px;}
+}

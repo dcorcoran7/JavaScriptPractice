@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+        <title>
+            Question 1: Student Grades
+        </title>
+
+        <script>
+            var students = 0;
+            var counter = 0;
+            students = window.prompt("Enter the total number of students:");
+            var grades = new Array();
+
+            do {
+                grade_input = Number(window.prompt("Enter a student grade:"));
+                grades[counter] = grade_input;
+                counter += 1;
+            } while(students > counter);
+
+            var sum = 0;
+            var best_grade = 0;
+            var worst_grade = 100;
+
+            for(i = 0; i <= students - 1; i++) {
+                sum += grades[i];
+
+                if (grades[i] > best_grade){
+                    best_grade = grades[i]
+                }
+
+                if (grades[i] < worst_grade){
+                    worst_grade = grades[i]
+                }
+            };
+
+            var gpa = (sum / students);
+
+            document.writeln("CLASS STATISTICS", "<br>");
+            document.writeln("Number of Students: ", students, "<br>");
+            document.writeln("GPA: ", gpa, "<br>");
+            document.writeln("Best Grade: ", best_grade, "<br>");
+            document.writeln("Worst Grade: ", worst_grade, "<br>");
+            
+        </script>
+    </head> 
+
+    <body>
+        
+    </body>
+
+</html>

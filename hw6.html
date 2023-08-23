@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Cassell Guard
+    </title>
+    <meta charset="utf-8" />
+    <meta name="description" content="Home Page">
+    <meta name="keywords" content="VT,Virginia Tech, Student Organizations, Basketball, Cassell Guard">
+    <meta name="author" content="David Corcoran" >
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>       
+        
+        function getTimeDiff(today, commencementDate) {
+            var c = document.getElementById("countdownclock");
+            
+            setInterval(updateTime, 1000)
+
+            function updateTime() {
+                var commencementDate = new Date("May 14, 2021"). getTime();
+                var today = new Date().getTime();
+                var difference = (commencementDate -  today) / 1000;
+                
+                var days = Math.floor(difference / (60 * 60 * 24));
+                var hours = Math.floor((difference % (60 * 60 * 24)) / (60 * 60));
+                var minutes = Math.floor((difference % (60 * 60)) / (60));
+                var seconds = Math.floor((difference % (60) ));
+                
+                c.innerHTML = days + " DAYS " + hours + " HOURS " + minutes + " MINUTES " + seconds + " SECONDS ";
+            }
+            
+            
+        }
+
+        document.addEventListener("DOMContentLoaded", getTimeDiff, false);
+
+        function init(){
+            document.images[0].addEventListener("mouseover", imageOver, false);
+            document.images[0].addEventListener("mouseout", imageOut, false);
+            document.addEventListener("click", leaveAlert, false);
+        }
+
+        function imageOver() {
+            document.images[0].src="CassellColiseum.jpg";
+        }
+
+        function imageOut(){
+            document.images[0].src="CassellGuardLogo.jpg";
+        }
+
+        function leaveAlert() {
+            if (!confirm("Please confirm leaving this page")) {
+                e.preventDefault();
+            }
+        }
+
+        window.addEventListener("load", init, false);
+
+    </script>
+
+</head>
+<body>
+    <h1>
+        Cassell Guard Home Page
+    </h1>
+
+    <p id = "countdownclock"></p><br/>
+    <a href="https://vt.edu/">VT Home Page</a><br/>
+
+    <br/><nav>Menu
+        <ul>
+           <li><a href = "HW4-MembersPageUpdate.html">Members Page</a></li>
+           <li><a href = "HW4-AboutPageUpdate.html">About Page</a></li>
+        </ul>
+     </nav><br/> 
+
+    <a href="https://gobblerconnect.vt.edu/organization/cassellguard"><img src="CassellGuardLogo.jpg" alt="Cassell Guard Logo"></a>
+    
+    <ul>
+        <li>
+            <p><a href="HW4-HomePageUpdate.html#Gen">General Membership</a></p>
+        </li>
+        <li>
+            <p><a href="HW4-HomePageUpdate.html#Exec">Executive Board</a></p>
+        </li>
+    </ul>
+    <h2
+         id="Gen"> General Membership
+    </h2>
+    <p class="paragraph">
+        Every student who sits in the student section on game days is considered to be a general member of Cassell Guard.
+    </p> 
+    <h2 
+         id="Exec"> Executive Board
+    </h2>
+    <p class="paragraph">
+        The Executive Board consists of die-hard Virginia Tech Basketball fans that are hand-selected each year through an application process.
+    </p>
+    <h3>
+        Executive Board Responsibilities:
+    </h3>
+    <ol>
+        <li>
+            Organize giveaways for students
+        </li>
+        <li>
+            Run the Cassell Guard social media account
+        </li>
+        <li>
+            Plan events to boost fan interaction
+        </li>
+    </ol>
+
+    <img class="Logo" src="VTLogo.png" width="100" height="50" alt="VT Logo">
+    <p> <br/> copyright &copy; 2021</p>
+</body>
+</html>

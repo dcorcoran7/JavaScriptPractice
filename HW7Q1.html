@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Client-side input validation</title>
+    <style>
+        /*the CSS style applies to all html elements with class='error'*/
+        .error {
+            color: red;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        function checkInputs(event) {
+            var frmObject = document.forms[0];
+            var output = "Please correct the errors on the page.";
+            var checkError = false;
+
+            //check the full name text box. 
+            //If there is an error, set checkError to true and add a new text node for the error message
+            if (frmObject.fullName.value == "") {
+                //update the checkError value to true
+                checkError = true;
+
+                //change the label element to red color
+                document.getElementById("theName").className = "error";
+
+                //add a new div element as a child node of the div element with id theName
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please type in your full name.");
+				newDiv.appendChild(message);
+				document.getElementById("theName").appendChild(newDiv);
+            }
+
+            //check the address text area
+            //If there is an error, set checkError to true and add a new text node for the error message
+            if (frmObject.address.value == "") {
+                checkError = true;
+
+                document.getElementById("theAddress").className = "error";
+
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please type in your address.");
+				newDiv.appendChild(message);
+				document.getElementById("theAddress").appendChild(newDiv);
+
+            }
+
+            //check the fullTime radio button
+            //If there is an error, set checkError to true and add a new text node for the error message
+            if (isUnchecked(frmObject.fulltime)) {
+                checkError = true;
+
+                document.getElementById("FullTimeStatus").className = "error";
+                document.getElementById("fullTimeTitle").className = "error";
+
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please type in your status.");
+				newDiv.appendChild(message);
+				document.getElementById("FullTimeStatus").appendChild(newDiv);
+            }
+
+            //check the Major dropdown
+            //If there is an error, set checkError to true and add a new text node for the error message
+            if (frmObject.major.value == "") {
+                checkError = true;
+
+                document.getElementById("major").className = "error";
+
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please select a major.");
+				newDiv.appendChild(message);
+				document.getElementById("major").appendChild(newDiv);
+
+            }
+
+            //check the GPA text box
+            //If there is an error, set checkError to true and add a new text node for the error message
+            if (frmObject.gpa.value == "") {
+                checkError = true;
+
+                document.getElementById("theGPA").className = "error";
+                document.getElementById("gpaTitle").className = "error";
+
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please type in your gpa.");
+				newDiv.appendChild(message);
+				document.getElementById("theGPA").appendChild(newDiv);
+
+            }
+
+            var gpaCounter = 0
+            if (frmObject.gpa.value > 4 || frmObject.gpa.value < 0) {
+                checkError = true;
+
+                document.getElementById("theGPA").className = "error";
+
+                
+                var newDiv = document.createElement("div");
+				var message = document.createTextNode("Please enter a gpa between 0 and 4");
+				newDiv.appendChild(message);
+				document.getElementById("theGPA").appendChild(newDiv);
+                
+            }
+            
+
+            function isUnchecked(object) {
+                //return true if all radio buttons are not checked
+				var unchecked = true;
+				for (i=0; i < object.length; i++){
+					if(object[i].checked) {
+						unchecked = false;
+						return unchecked;
+					}
+				}
+				return unchecked;
+            }
+
+            //stop the event from continuing if errors exist
+            if (checkError) {
+                alert(output);
+				event.preventDefault();
+				return;
+            }
+        }
+
+        function init() {
+            //specify the function checkInputs as the event listner for the submit event of the form element
+            var x = document.getElementsByTagName("form")[0];
+			x.addEventListener("submit", checkInputs);
+
+        }
+
+        //Define the DOMContentLoaded event handler, which will be triggered after the document finishes loading
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+</head>
+
+<body>
+    <h2>Please enter all the desired information</h2>
+    <form name="myForm" method="post" action="success.html">
+        <div>Supply your name and address</div>
+        <div id="theName">
+            <strong>Full Name:</strong><br />
+            <input type="text" name="fullName" size="20" /><br />
+        </div>
+
+        <div id="theAddress">
+            <strong>Address:</strong><br />
+            <textarea name="address" rows="3" cols="25"></textarea><br />
+        </div>
+
+        <div id="fullTimeTitle"><strong>Are you a full-time student?</strong></div>
+        <div id="FullTimeStatus">
+            <input type="radio" name="fulltime" value="yes" />Yes
+            <input type="radio" name="fulltime" value="no" />No<br />
+        </div>
+        <br />
+        <div id="major"><strong>What is your major?</strong>
+            <select name="major">
+                <option value = "" selected></option>
+                <option value="UNDECIDED">Undecided</option>
+                <option value="ACIS">ACIS</option>
+                <option value="BIT">BIT</option>
+                <option value="FIN">Finance</option>
+                <option value="MKTG">Marketing</option>
+                <option value="MGT">Management</option>
+            </select>
+        </div>
+        <br />
+        <div id="gpaTitle"><strong>What is your GPA in the 4.0 scale?</strong>
+        </div>
+        <div id="theGPA">
+            <input type="number" name="gpa" size="20" /><br />
+        </div>
+        <input type="submit" name="button1" value="Submit" />
+    </form>
+</body>
+
+</html>

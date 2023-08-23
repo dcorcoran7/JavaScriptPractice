@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    <head>
+        <meta charset = "utf-8">
+
+        <title>
+            Homework 6 Q3
+        </title>
+
+        <script>
+
+            function calculateCircleArea(radius) {
+                return Math.PI * Math.pow(radius, 2);
+            }
+
+            function init() {
+                var userRadius = Number(window.prompt("Enter a radius (in inches):"));
+                var area = document.getElementById("CircleArea");
+                area.innerHTML = calculateCircleArea(userRadius)
+            }
+            
+            window.addEventListener("load", init, false);
+
+        </script>
+    </head>
+
+    <body>
+        
+        <p>The area of the circle is <span id = "CircleArea"> AREA </span> square inches</p>
+
+    </body>
+</html>
